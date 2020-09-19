@@ -1,12 +1,13 @@
 const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const nunjucks = require('nunjucks');
+import express from 'express';
+import cookieParser from 'cookie-parser';
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+import logger from 'morgan';
+import * as nunjucks from 'nunjucks';
+import * as path from 'path';
+
+import {indexHandler} from './routes/index';
+import {userHandler} from './routes/users';
 
 const app = express();
 
@@ -21,21 +22,21 @@ nunjucks.configure('views', {
 app.set('view engine', 'html');
 
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', express.Router().get('/', indexHandler));
+app.use('/users', express.Router().get('/', userHandler));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(req: any, res: any, next: any) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err: any, req: any, res: any, next: any) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
