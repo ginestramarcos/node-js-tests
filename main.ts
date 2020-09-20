@@ -1,17 +1,15 @@
-#!/usr/bin/env node
-
-const app = require('./app');
-const debug = require('debug')('node-js-tests:server');
+import {app} from './app';
 import http from 'http';
+import { verify } from 'crypto';
 
 const port = parseInt(process.env.PORT || '3000', 10);
 app.set('port', port);
 
-var server = http.createServer(app);
-
+const server = http.createServer(app);
 server.listen(port);
 server.on('listening', onListening);
 
+// eslint-disable-next-line require-jsdoc
 function onListening() {
-  console.log('Started listening on ' + server.address());
+  console.log('Started listening on ' + port);
 }

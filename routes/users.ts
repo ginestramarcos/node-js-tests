@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
+import {Request, Response, NextFunction} from 'express';
 
-export function userHandler(req: any, res: any, next: any) {
+// eslint-disable-next-line require-jsdoc
+export function userHandler(
+    req: Request, res: Response, next: NextFunction) {
   res.send('respond with a resource');
 };
