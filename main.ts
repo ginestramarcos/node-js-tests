@@ -1,6 +1,5 @@
 import {app} from './app';
 import http from 'http';
-import { verify } from 'crypto';
 
 const port = parseInt(process.env.PORT || '3000', 10);
 app.set('port', port);
