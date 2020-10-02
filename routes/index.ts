@@ -7,5 +7,4 @@ export function indexHandler(
     name: req.query.name,
     bodyContents: 'Templatized body contents',
   });
-  console.log(req.query);
 }

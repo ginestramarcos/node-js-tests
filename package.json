@@ -9,7 +9,7 @@
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only main.ts",
     "lint": "eslint .",
-    "push": "npm run lint && npm test && git push"
+    "push": "npm run lint && npm run tsc && npm test && git push"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.2",
