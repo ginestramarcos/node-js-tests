@@ -20,5 +20,14 @@
         "@typescript-eslint"
     ],
     "rules": {
-    }
+    },
+    "overrides": [
+        {
+          "files": ["*.ts"],
+          "excludedFiles": "compiled/**/*",
+          "rules": {
+            "quotes": ["error", "single"]
+          }
+        }
+      ]
 }

@@ -1,7 +1,11 @@
-import {Request, Response, NextFunction} from 'express';
+import express from 'express';
 
 // eslint-disable-next-line require-jsdoc
 export function indexHandler(
-    req: Request, res: Response, next: NextFunction) {
-  res.render('index', {bodyContents: 'Templatized body contents'});
-};
+    req: express.Request, res: express.Response, next: express.NextFunction) {
+  res.render('index', {
+    name: req.query.name,
+    bodyContents: 'Templatized body contents',
+  });
+  console.log(req.query);
+}

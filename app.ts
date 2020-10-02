@@ -3,13 +3,16 @@ import cookieParser from 'cookie-parser';
 import createError from 'http-errors';
 
 import logger from 'morgan';
-import * as nunjucks from 'nunjucks';
-import * as path from 'path';
+import nunjucks from 'nunjucks';
+import path from 'path';
 
 import {indexHandler} from './routes/index';
 import {userHandler} from './routes/users';
 
+export const port = parseInt(process.env.PORT || '3000', 10);
+
 export const app = express();
+app.set('port', port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
