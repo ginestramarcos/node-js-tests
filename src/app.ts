@@ -14,7 +14,7 @@ export const port = parseInt(process.env.PORT || '3000', 10);
 export const app = express();
 app.set('port', port);
 
-nunjucks.configure('views', {
+nunjucks.configure('src/views', {
   express: app,
   autoescape: true,
 });
@@ -24,7 +24,8 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-const publicPath = path.join(__dirname, 'public').replace('/compiled/', '/');
+const publicPath = path.join(__dirname, 'public')
+    .replace('/compiled/', '/src/');
 app.use(express.static(publicPath));
 app.use(favicon(path.join(publicPath, 'images/favicon.ico')));
 
