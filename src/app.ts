@@ -1,13 +1,12 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import createError from 'http-errors';
-import favicon from 'serve-favicon';
 import logger from 'morgan';
 import nunjucks from 'nunjucks';
 import path from 'path';
 
-import {indexHandler} from './routes/index';
-import {userHandler} from './routes/users';
+import {templatizedHandler} from './routes/templatized';
+import {additionHandler} from './routes/addition';
 
 export const port = parseInt(process.env.PORT || '3000', 10);
 
@@ -24,14 +23,13 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-const publicPath = path.join(__dirname, 'public')
-    .replace('/compiled/', '/src/');
+
+const publicPath = path.join(__dirname, '../dist/client');
 app.use(express.static(publicPath));
-app.use(favicon(path.join(publicPath, 'images/favicon.ico')));
 
 const router: express.Router = new (express.Router as any)();
-router.get('/', indexHandler);
-router.get('/users', userHandler);
+router.get('/templatized', templatizedHandler);
+router.get('/addition', additionHandler);
 app.use(router);
 
 // catch 404 and forward to error handler
