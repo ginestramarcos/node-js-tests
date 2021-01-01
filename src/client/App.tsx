@@ -9,7 +9,7 @@ const Index = () => {
     <div>
       Welcome to React!
       <img style={{display: 'block'}} src={music} />
-      <MyComponent name="the user name"/>
+      <MyComponent name="your name here"/>
     </div>
   );
 };
