@@ -1,16 +1,36 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {MyComponent} from './components/MyComponent';
 import music from './images/music.png';
 
-const Index = () => {
+export default function App() {
   return (
-    <div>
-      Welcome to React!
-      <img style={{display: 'block'}} src={music} />
-      <MyComponent name="your name here"/>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/templatized">
+          <Templatized />
+        </Route>
+        <Route exact path="/">
+          <div>
+            Welcome to React!
+            <img style={{display: 'block'}} src={music} />
+            <MyComponent name="your name here"/>
+          </div>
+        </Route>
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
   );
-};
-ReactDOM.render(<Index />, document.getElementById('root'));
+}
+
+function Templatized() {
+  return <h2>Templatized here</h2>;
+}
+
+function NotFound() {
+  return <h2>Not found here</h2>;
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
