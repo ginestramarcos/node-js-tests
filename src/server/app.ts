@@ -13,7 +13,7 @@ export const port = parseInt(process.env.PORT || '3000', 10);
 export const app = express();
 app.set('port', port);
 
-nunjucks.configure('src/views', {
+nunjucks.configure(__dirname + '/views', {
   express: app,
   autoescape: true,
 });
@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-const publicPath = path.join(__dirname, '../dist/client');
+const publicPath = path.join(__dirname, '../../dist/client');
 app.use(express.static(publicPath));
 
 const router: express.Router = new (express.Router as any)();

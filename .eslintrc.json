@@ -23,8 +23,8 @@
     },
     "overrides": [
         {
-          "files": ["src/*.ts"],
-          "excludedFiles": "compiled/**/*",
+          "files": ["src/**/*.ts", "src/**/*.tsx"],
+          "excludedFiles": "dist/**/*",
           "rules": {
             "quotes": ["error", "single"]
           }
