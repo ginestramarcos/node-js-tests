@@ -10,6 +10,7 @@ interface Props {
 interface State {
   firstValue?: number;
   secondValue?: number;
+  operation?: string;
   result?: number | null;
 }
 
@@ -27,6 +28,11 @@ export class MyComponent extends React.Component<Props, State> {
   @autobind
   handleChangeSecondInput(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({secondValue: parseInt(event.target.value)});
+  }
+
+  @autobind
+  handleChangeOperation(event: React.ChangeEvent<HTMLSelectElement>) {
+    this.setState({operation: event.target.value});
   }
 
   @autobind
@@ -50,6 +56,7 @@ export class MyComponent extends React.Component<Props, State> {
     const params = new URLSearchParams({
       a: '' + (this.state.firstValue as number),
       b: '' + (this.state.secondValue as number),
+      op: (this.state.operation || 'add'),
     });
     fetch('addition?' + params)
         .then((res) => res.json())
@@ -68,6 +75,12 @@ export class MyComponent extends React.Component<Props, State> {
         <form onSubmit={this.handleSubmit}>
           <label> a:
             <input type="text" onChange={this.handleChangeFirstInput} />
+          </label>
+          <label>
+            <select onChange={this.handleChangeOperation}>
+              <option value="add">+</option>
+              <option value="subtract">-</option>
+            </select>
           </label>
           <label> b:
             <input type="text" onChange={this.handleChangeSecondInput} />

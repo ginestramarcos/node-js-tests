@@ -25,6 +25,7 @@ app.use(router);
 
 // catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: express.NextFunction) {
   res.sendFile(landingFile);
 });
@@ -32,6 +33,7 @@ app.use(function(req: express.Request, res: express.Response,
 // error handler
 app.use(function(
     err: any, req: express.Request, res: express.Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: express.NextFunction) {
   // set locals, only providing error in development
   res.locals.message = err.message;

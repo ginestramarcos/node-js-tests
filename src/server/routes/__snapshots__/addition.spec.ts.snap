@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic users request ajax 1`] = `"{\\"result\\":3}"`;
+exports[`basic users request ajax add 1`] = `"{\\"result\\":3}"`;
+
+exports[`basic users request ajax subtract 1`] = `"{\\"result\\":1}"`;

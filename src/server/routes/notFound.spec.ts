@@ -6,6 +6,7 @@ const request = supertest(app);
 it('not found delegated to client', async (done) => {
   const response = await request.get('/blahblah');
   expect(response.status).toBe(200);
-  expect(response.text).toMatchSnapshot();
+  expect(response.text).toContain('App.js');
+  expect(response.text).toContain('<script');
   done();
 });
