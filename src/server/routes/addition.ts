@@ -3,7 +3,7 @@ import express from 'express';
 enum Operation {
   Add = 'add',
   Subtract = 'subtract',
-};
+}
 
 interface QueryInput {
   a: string;

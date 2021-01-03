@@ -4,6 +4,8 @@ import logger from 'morgan';
 import path from 'path';
 
 import {additionHandler} from './routes/addition';
+import {productsHandler} from './routes/products';
+
 
 export const port = parseInt(process.env.PORT || '3000', 10);
 
@@ -20,7 +22,8 @@ const landingFile = path.join(publicPath, 'index.html');
 app.use(express.static(publicPath));
 
 const router: express.Router = new (express.Router as any)();
-router.get('/addition', additionHandler);
+router.get('/api/addition', additionHandler);
+router.get('/api/products', productsHandler);
 app.use(router);
 
 // catch 404 and forward to error handler

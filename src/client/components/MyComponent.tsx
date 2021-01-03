@@ -58,7 +58,7 @@ export class MyComponent extends React.Component<Props, State> {
       b: '' + (this.state.secondValue as number),
       op: (this.state.operation || 'add'),
     });
-    fetch('addition?' + params)
+    fetch('api/addition?' + params)
         .then((res) => res.json())
         .then(
             (response) => {

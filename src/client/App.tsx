@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {MyComponent} from './components/MyComponent';
+import {Products} from './components/Products';
 import music from './images/music.png';
 
 export default function App() {
@@ -11,6 +12,9 @@ export default function App() {
       <Switch>
         <Route path="/templatized">
           <Templatized />
+        </Route>
+        <Route path="/products">
+          <Products />
         </Route>
         <Route exact path="/">
           <div>
